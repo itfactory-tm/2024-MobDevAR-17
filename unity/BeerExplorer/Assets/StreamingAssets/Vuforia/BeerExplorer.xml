@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QCARConfig>
+  <Tracking>
+    <ImageTarget name="tsingtao" size="5.000000 6.666667" />
+    <ImageTarget name="heineken" size="5.000000 6.000000" />
+    <ImageTarget name="duvel" size="5.000000 3.710562" />
+  </Tracking>
+</QCARConfig>
