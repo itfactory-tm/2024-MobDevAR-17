@@ -1,4 +1,7 @@
-import 'package:beer_explorer/Response.dart';
+import 'package:beer_explorer/apis/beer_api.dart';
+import 'package:beer_explorer/apis/user_api.dart';
+import 'package:beer_explorer/globals.dart';
+import 'package:beer_explorer/models/beer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_unity_widget/flutter_unity_widget.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -14,6 +17,7 @@ class ArPage extends StatefulWidget {
 class _ArPageState extends State<ArPage> {
   UnityWidgetController? _unityWidgetController;
   bool _isCameraPermissionGranted = false;
+  Beer? beer;
 
   @override
   void initState() {
@@ -55,52 +59,66 @@ class _ArPageState extends State<ArPage> {
     );
   }
 
-  void onUnityMessage(message) {
-    debugPrint('Received message from Unity: ${message.data}');
-
-    // Decode the JSON message
-    Map<String, dynamic> responseJson = jsonDecode(message.data);
-
-    // Map the JSON to the Response class
-    Response response = Response.fromJson(responseJson);
-
-    // Verwerken van BeerResponses
-    for (BeerResponse beer in response.data) {
-      debugPrint(
-          'Name: ${beer.name}, Brewery: ${beer.brewery}, Country: ${beer.country}');
+  void _sendBeer() {
+    if (beer != null) {
+      _unityWidgetController?.postMessage(
+          "TargetBeer", "SetTargetBeer", jsonEncode(beer!.toJson()));
+      debugPrint("Beer sent to Unity: ${beer!.name}");
+    } else {
+      debugPrint("No beer to send to Unity.");
     }
+  }
 
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Beers from Unity'),
-        content: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: response.data.map((beer) {
-              return Text(
-                'Name: ${beer.name}\nBrewery: ${beer.brewery}\nCountry: ${beer.country}\n\n',
-                style: const TextStyle(fontSize: 16),
-              );
-            }).toList(),
-          ),
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Close'),
-          ),
-        ],
-      ),
-    );
+  void onUnityMessage(message) {
+    debugPrint('+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-');
+
+    try {
+      Map<String, dynamic> decodedMessage = json.decode(message);
+      String key = decodedMessage['key'];
+      String name = decodedMessage['name'];
+
+      if (key == "TrackedObject" && name.isNotEmpty) {
+        BeerApi.fetchBeerByName(name).then((beer) {
+          setState(() {
+            this.beer = beer;
+          });
+          if (beer != null) {
+            _sendBeer();
+            UserApi.addBeerToUser(currentUser!.id, this.beer!.id);
+          } else {
+            debugPrint("Beer not found: $name");
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Text("Bier $name niet gevonden!"),
+                  content: const Text("Probeer een ander bier..."),
+                  actions: [
+                    TextButton(
+                      child: const Text("OK"),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                );
+              },
+            );
+          }
+        });
+      }
+    } catch (e) {
+      debugPrint('Error parsing message from Unity: $e');
+    }
   }
 
   void onUnitySceneLoaded(SceneLoaded? scene) {
     if (scene != null) {
-      print('Received scene loaded from unity: ${scene.name}');
-      print('Received scene loaded from unity buildIndex: ${scene.buildIndex}');
+      debugPrint('Received scene loaded from unity: ${scene.name}');
+      debugPrint(
+          'Received scene loaded from unity buildIndex: ${scene.buildIndex}');
     } else {
-      print('Received scene loaded from unity: null');
+      debugPrint('Received scene loaded from unity: null');
     }
   }
 

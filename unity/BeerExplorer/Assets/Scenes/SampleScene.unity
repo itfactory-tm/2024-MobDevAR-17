@@ -134,8 +134,8 @@ GameObject:
   - component: {fileID: 60143521}
   - component: {fileID: 60143520}
   - component: {fileID: 60143519}
-  - component: {fileID: 60143518}
   - component: {fileID: 60143522}
+  - component: {fileID: 60143523}
   m_Layer: 0
   m_Name: TsingTao
   m_TagString: Untagged
@@ -143,25 +143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &60143518
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 60143517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 60143520}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: tsingtao
-  mDatasetName: Vuforia/BeerExplorer.xml
-  mCastedBehaviour: {fileID: 60143520}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &60143519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +213,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 60143518}
+  mPreview: {fileID: 60143523}
 --- !u!4 &60143521
 Transform:
   m_ObjectHideFlags: 0
@@ -296,10 +277,25 @@ MonoBehaviour:
   _name: Tsingtao
   pinPrefab: {fileID: 1558069168}
   distanceFromCamera: 2
-  response:
-    code: 
-    error: 
-    data: []
+--- !u!114 &60143523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60143517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 60143520}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: tsingtao
+  mDatasetName: Vuforia/BeerExplorer.xml
+  mCastedBehaviour: {fileID: 60143520}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &417570975
 GameObject:
   m_ObjectHideFlags: 0
@@ -469,8 +465,8 @@ GameObject:
   - component: {fileID: 618128687}
   - component: {fileID: 618128686}
   - component: {fileID: 618128685}
-  - component: {fileID: 618128684}
   - component: {fileID: 618128688}
+  - component: {fileID: 618128689}
   m_Layer: 0
   m_Name: Heineken
   m_TagString: Untagged
@@ -478,25 +474,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &618128684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618128683}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mObserverBehaviour: {fileID: 618128686}
-  mHiddenRoot: {fileID: 0}
-  mTargetName: heineken
-  mDatasetName: Vuforia/BeerExplorer.xml
-  mCastedBehaviour: {fileID: 618128686}
-  mMeshFilter: {fileID: 0}
-  mMeshRenderer: {fileID: 0}
 --- !u!114 &618128685
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,7 +544,7 @@ MonoBehaviour:
   mMotionHint: 1
   mTrackingOptimization: 0
   mTrackingOptimizationNeedsUpgrade: 0
-  mPreview: {fileID: 618128684}
+  mPreview: {fileID: 618128689}
 --- !u!4 &618128687
 Transform:
   m_ObjectHideFlags: 0
@@ -631,10 +608,25 @@ MonoBehaviour:
   _name: Heineken
   pinPrefab: {fileID: 1558069168}
   distanceFromCamera: 2
-  response:
-    code: 
-    error: 
-    data: []
+--- !u!114 &618128689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618128683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1778676317, guid: 8a9a760f95896c34689febc965510927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mObserverBehaviour: {fileID: 618128686}
+  mHiddenRoot: {fileID: 0}
+  mTargetName: heineken
+  mDatasetName: Vuforia/BeerExplorer.xml
+  mCastedBehaviour: {fileID: 618128686}
+  mMeshFilter: {fileID: 0}
+  mMeshRenderer: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,7 +1098,7 @@ Transform:
   m_GameObject: {fileID: 1111347603}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0, z: -34.68}
+  m_LocalPosition: {x: -0.15, y: 0, z: -33}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1430,10 +1422,6 @@ MonoBehaviour:
   _name: Duvel
   pinPrefab: {fileID: 1558069168}
   distanceFromCamera: 2
-  response:
-    code: 
-    error: 
-    data: []
 --- !u!114 &1353459133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1624,7 +1612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec78d194da8abb7468345ae62bade8de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.125
+      value: 40.71
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ec78d194da8abb7468345ae62bade8de, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1680,6 +1668,50 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: ec78d194da8abb7468345ae62bade8de, type: 3}
   m_PrefabInstance: {fileID: 1558069167}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1934214377
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1934214378}
+  - component: {fileID: 1934214379}
+  m_Layer: 0
+  m_Name: TargetBeer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1934214378
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934214377}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.925751, y: 1.0525551, z: 12.650784}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1934214379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1934214377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7daeceebc845287448737d805d3ba2fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1694,3 +1726,4 @@ SceneRoots:
   - {fileID: 618128687}
   - {fileID: 60143521}
   - {fileID: 1542607680}
+  - {fileID: 1934214378}

@@ -26,7 +26,7 @@ public class WorldInteraction : MonoBehaviour
         HandleZoom();
     }
 
-        private void HandleRotation()
+    private void HandleRotation()
     {
         // Muis Invoer
         if (Input.GetMouseButtonDown(0)) // Als je de muisknop indrukt

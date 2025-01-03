@@ -1,4 +1,5 @@
 import 'package:beer_explorer/pages/ar_page.dart';
+import 'package:beer_explorer/pages/beer_list.dart';
 import 'package:beer_explorer/pages/info.dart';
 import 'package:flutter/material.dart';
 
@@ -14,9 +15,9 @@ class _HomePageState extends State<HomePage> {
 
   // List of pages to navigate between
   final List<Widget> _pages = [
-    const InfoPage(title: "BeerExplorer", description: "hello world!"),
+    const InfoPage(),
     const ArPage(),
-    const InfoPage(title: "BeerExplorer", description: "hello world3!")
+    const BeerListPage()
   ];
 
   // This function will handle the bottom navigation tap
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
         destinations: const [
           NavigationDestination(icon: Icon(Icons.home), label: 'Home'),
           NavigationDestination(icon: Icon(Icons.camera), label: 'Scan'),
-          NavigationDestination(icon: Icon(Icons.home), label: 'Home3'),
+          NavigationDestination(icon: Icon(Icons.home), label: 'Collection'),
         ],
       ),
     );

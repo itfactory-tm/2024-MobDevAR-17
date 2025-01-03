@@ -1,7 +1,5 @@
-using System.Collections;
 using FlutterUnityIntegration;
 using UnityEngine;
-using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class BeerInformationHandler : MonoBehaviour
@@ -17,9 +15,6 @@ public class BeerInformationHandler : MonoBehaviour
 
     void SendPostRequest()
     {
-        if (popupWorld.response != null)
-        {
-            UnityMessageManager.Instance.SendMessageToFlutter(JsonUtility.ToJson(popupWorld.response));
-        }
+        Debug.Log("Sended message!");
     }
 }

@@ -24,7 +24,7 @@ public class LongLat : MonoBehaviour
 
     private void OnValidate()
     {
-    //    UpdatePins();
+       UpdatePins();
     }
 
     private void UpdatePins()

@@ -1,0 +1,79 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "george.bluth@reqres.in",
+      "name": "George",
+      "password": "abc",
+      "beers": []
+    },
+    {
+      "id": 2,
+      "email": "janet.weaver@ping.be",
+      "name": "Janet",
+      "password": "abc",
+      "beers": []
+    },
+    {
+      "id": 3,
+      "email": "eve.holt@request.com",
+      "name": "Eve",
+      "password": "abc",
+      "beers": []
+    },
+    {
+      "id": 4,
+      "email": "charles.morris@idaho.org",
+      "name": "Charles",
+      "password": "abc",
+      "beers": []
+    },
+    {
+      "id": 5,
+      "email": "tracey.ramos@google.com",
+      "name": "Tracey",
+      "password": "abc",
+      "beers": []
+    },
+    {
+      "email": "fsd",
+      "name": "fsd",
+      "password": "fqsd",
+      "beers": [
+        1
+      ],
+      "id": 6
+    },
+    {
+      "email": "fsdfqsfsq",
+      "name": "fsdqfsdfqs",
+      "password": "fsqfsqfsqfsqf",
+      "beers": [
+        1
+      ],
+      "id": 7
+    },
+    {
+      "email": "a",
+      "name": "sander",
+      "password": "aaa",
+      "beers": [
+        1
+      ],
+      "id": 8
+    }
+  ],
+  "beers": [
+    {
+      "id": 1,
+      "name": "Duvel",
+      "brewery": "abc",
+      "rating": 4.8,
+      "description": "dfdsqfsqdfsqfqsfs",
+      "countries": [
+        "Belgium",
+        "Netherlands"
+      ]
+    }
+  ]
+}
