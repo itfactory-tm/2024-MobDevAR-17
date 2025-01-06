@@ -77,9 +77,7 @@
         6
       ],
       "likedBeers": [
-        6,
-        3,
-        2
+        6
       ],
       "id": 9
     }
@@ -87,7 +85,7 @@
   "beers": [
     {
       "id": 1,
-      "name": "Paix Dieu",
+      "name": "PaixDieu",
       "brewery": "Brasserie Dupont",
       "rating": 4.6,
       "description": "Een Belgisch abdijbier met een rijke smaak en een lichte kruidigheid.",
@@ -97,7 +95,7 @@
     },
     {
       "id": 2,
-      "name": "Stella Artois",
+      "name": "StellaArtois",
       "brewery": "Stella Artois",
       "rating": 4.3,
       "description": "Een frisse pilsener met een zachte bittere smaak en een subtiele moutigheid.",
@@ -120,7 +118,7 @@
     },
     {
       "id": 4,
-      "name": "Chimay Blue",
+      "name": "ChimayBlue",
       "brewery": "Chimay",
       "rating": 4.7,
       "description": "Een donker trappistenbier met een rijke en krachtige smaak.",
@@ -132,7 +130,7 @@
     },
     {
       "id": 5,
-      "name": "Westmalle Tripel",
+      "name": "WestmalleTripel",
       "brewery": "Westmalle",
       "rating": 4.9,
       "description": "Een gouden tripel met een complexe smaak en een kruidige geur.",
@@ -144,7 +142,7 @@
     },
     {
       "id": 6,
-      "name": "Westmalle Dubbel",
+      "name": "WestmalleDubbel",
       "brewery": "Westmalle",
       "rating": 4.7,
       "description": "Een dieper gekleurde dubbel met een rijke en moutige smaak.",
@@ -167,7 +165,7 @@
     },
     {
       "id": 8,
-      "name": "Leffe Blonde",
+      "name": "LeffeBlonde",
       "brewery": "Leffe",
       "rating": 4.5,
       "description": "Een zacht en fruitig abdijbier met een lichte hint van vanille.",
@@ -191,7 +189,7 @@
     },
     {
       "id": 10,
-      "name": "Guinness Draught",
+      "name": "GuinnessDraught",
       "brewery": "Guinness",
       "rating": 4.6,
       "description": "Een iconisch Iers stoutbier met een zachte, romige textuur.",
