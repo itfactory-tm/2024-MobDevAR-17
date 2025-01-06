@@ -5,6 +5,8 @@ public class WorldVisibility : MonoBehaviour
 {
     public GameObject world;
 
+    private Quaternion defaultRotation = Quaternion.Euler(-7.722f, -40.598f, 1.169f);
+
     void Start()
     {
         
@@ -19,5 +21,6 @@ public class WorldVisibility : MonoBehaviour
     void SetWorldVisibility(string worldVisibility)
     {
         world.SetActive(JsonConvert.DeserializeObject<bool>(worldVisibility));
+        world.transform.rotation = defaultRotation;
     }
 }

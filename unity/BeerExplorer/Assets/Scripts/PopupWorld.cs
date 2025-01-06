@@ -16,7 +16,7 @@ public class PopupWorld : DefaultObserverEventHandler
     private readonly float radius = 10f;
     public float distanceFromCamera = 2.0f;
 
-    private List<string> countries = new List<string>() { "nul", "France", "Spain" };
+    // private List<string> countries = new List<string>() { "nul", "France", "Spain" };
 
     protected override void Start()
     {
@@ -38,18 +38,16 @@ public class PopupWorld : DefaultObserverEventHandler
     {
         base.OnTrackingFound();
         // PlacePins(countries);
+
         // Stuur het bericht naar Flutter
         UnityMessageManager.Instance.SendMessageToFlutter(JsonUtility.ToJson(
             new TrackedObjectMessageFlutter() { key = "TrackedObject", name = _name }
         ));
-
-        world.SetActive(true);
     }
 
     protected override void OnTrackingLost()
     {
         base.OnTrackingLost();
-        // world.SetActive(false);
     }
 
     public void PlacePins(List<string> countries) {

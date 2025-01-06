@@ -60,7 +60,10 @@
       "name": "sander",
       "password": "aaa",
       "beers": [
-        1
+        1,
+        3,
+        4,
+        5
       ],
       "id": 8
     },

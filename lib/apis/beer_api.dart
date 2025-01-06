@@ -3,8 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class BeerApi {
-  // static String server = '192.168.0.240:3000';
-  static String server = '192.168.0.70:3000';
+  static String server = '192.168.0.240:3000';
+  // static String server = '192.168.0.70:3000';
 
   static Future<List<Beer>> fetchBeers() async {
     var url = Uri.http(server, '/beers');
@@ -112,8 +112,9 @@ class BeerApi {
     return []; // Return an empty list on failure
   }
 
- static Future<List<Beer>> fetchTopBeers() async {
-    var url = Uri.http(server, '/beers/top');  // Zorg ervoor dat de server dit endpoint ondersteunt
+  static Future<List<Beer>> fetchTopBeers() async {
+    var url = Uri.http(server,
+        '/beers/top'); // Zorg ervoor dat de server dit endpoint ondersteunt
 
     try {
       final response = await http.get(url);
@@ -124,11 +125,11 @@ class BeerApi {
       } else {
         // Foutafhandelingscode als de statuscode niet 200 is
         print('Failed to load top beers: ${response.statusCode}');
-        return [];  // Retourneer een lege lijst als het ophalen van de bieren mislukt
+        return []; // Retourneer een lege lijst als het ophalen van de bieren mislukt
       }
     } catch (e) {
       print('Error fetching top beers: $e');
-      return [];  // Retourneer een lege lijst bij een netwerkfout
+      return []; // Retourneer een lege lijst bij een netwerkfout
     }
   }
 }
