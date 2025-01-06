@@ -21,7 +21,7 @@ class User {
         name: json['name'],
         password: json['password'],
         beers: List<int>.from(json['beers'].map((x) => x as int)),
-        likedBeers: List<int>.from(json['beers'].map((x) => x as int)));
+        likedBeers: List<int>.from(json['likedBeers'].map((x) => x as int)));
   }
 
   Map<String, dynamic> toJson() => {

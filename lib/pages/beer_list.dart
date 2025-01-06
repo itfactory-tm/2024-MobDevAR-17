@@ -97,10 +97,18 @@ class _BeerListPageState extends State<BeerListPage> {
   @override
   Widget build(BuildContext context) {
     // Check if beerList is empty (still loading), show a loading indicator if so
-    if (beerList.isEmpty) {
-      return const Center(
-          child:
-              CircularProgressIndicator()); // Show loading if beerList is empty
+    if (beerList.isEmpty && filteredBeerList.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text("Explored Beers"),
+        ),
+        body: const Center(
+          child: Text(
+            "No scanned beers yet.",
+            style: TextStyle(fontSize: 18.0, color: Colors.grey),
+          ),
+        ),
+      );
     }
 
     // Check if sorting by liked beers and there are no liked beers

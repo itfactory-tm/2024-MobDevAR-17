@@ -72,7 +72,10 @@
         3,
         2
       ],
-      "likedBeers": [],
+      "likedBeers": [
+        5,
+        3
+      ],
       "id": 8
     },
     {
@@ -93,46 +96,14 @@
       "id": 9
     },
     {
-      "email": "hallo@g.com",
-      "name": "plop",
-      "password": "a",
+      "email": "bob@gmail.com",
+      "name": "bob",
+      "password": "bob",
       "beers": [
         5
       ],
       "likedBeers": [],
       "id": 10
-    },
-    {
-      "email": "p@p.com",
-      "name": "p",
-      "password": "p",
-      "beers": [
-        5
-      ],
-      "likedBeers": [],
-      "id": 11
-    },
-    {
-      "email": "k@k.com",
-      "name": "k",
-      "password": "k",
-      "beers": [
-        5,
-        3
-      ],
-      "likedBeers": [],
-      "id": 12
-    },
-    {
-      "email": "w@j.com",
-      "name": "w",
-      "password": "w",
-      "beers": [
-        3,
-        5
-      ],
-      "likedBeers": [],
-      "id": 13
     }
   ],
   "beers": [
