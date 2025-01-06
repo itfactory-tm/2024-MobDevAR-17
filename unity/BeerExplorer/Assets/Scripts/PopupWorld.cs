@@ -16,8 +16,6 @@ public class PopupWorld : DefaultObserverEventHandler
     private readonly float radius = 10f;
     public float distanceFromCamera = 2.0f;
 
-    // private List<string> countries = new List<string>() { "nul", "France", "Spain" };
-
     protected override void Start()
     {
         base.Start();

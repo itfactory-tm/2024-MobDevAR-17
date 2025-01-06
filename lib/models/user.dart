@@ -11,7 +11,7 @@ class User {
       required this.email,
       required this.name,
       required this.password,
-      required this.beers, 
+      required this.beers,
       required this.likedBeers});
 
   factory User.fromJson(Map<String, dynamic> json) {
@@ -24,6 +24,11 @@ class User {
         likedBeers: List<int>.from(json['beers'].map((x) => x as int)));
   }
 
-  Map<String, dynamic> toJson() =>
-      {'email': email, 'name': name, 'password': password, 'beers': beers, 'likedBeers': likedBeers};
+  Map<String, dynamic> toJson() => {
+        'email': email,
+        'name': name,
+        'password': password,
+        'beers': beers,
+        'likedBeers': likedBeers
+      };
 }

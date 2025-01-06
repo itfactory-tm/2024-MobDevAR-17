@@ -26,33 +26,41 @@ class _InfoPageState extends State<InfoPage> {
       floatingActionButton: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          FloatingActionButton(
+          ElevatedButton.icon(
             onPressed: _navigateToRegister,
-            tooltip: "Register",
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
-              child: Text(
-                "Register",
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
+            icon: const Icon(Icons.person_add, color: Colors.white),
+            label: const Text(
+              "Register",
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
               ),
             ),
-          ),
-          const SizedBox(width: 16), // Ruimte tussen de knoppen
-          FloatingActionButton(
-            onPressed: _navigateToLogin,
-            tooltip: "Login",
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
-              child: Text(
-                "Login",
-                style: TextStyle(
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.bold,
-                ),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
               ),
+              backgroundColor: Colors.green,
+            ),
+          ),
+          const SizedBox(width: 8), // Kleine ruimte tussen de knoppen
+          ElevatedButton.icon(
+            onPressed: _navigateToLogin,
+            icon: const Icon(Icons.login, color: Colors.white),
+            label: const Text(
+              "Login",
+              style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              backgroundColor: Colors.blue,
             ),
           ),
         ],

@@ -7,35 +7,40 @@
       "password": "abc",
       "beers": [
         1
-      ]
+      ],
+      "likedBeers": []
     },
     {
       "id": 2,
       "email": "janet.weaver@ping.be",
       "name": "Janet",
       "password": "abc",
-      "beers": []
+      "beers": [],
+      "likedBeers": []
     },
     {
       "id": 3,
       "email": "eve.holt@request.com",
       "name": "Eve",
       "password": "abc",
-      "beers": []
+      "beers": [],
+      "likedBeers": []
     },
     {
       "id": 4,
       "email": "charles.morris@idaho.org",
       "name": "Charles",
       "password": "abc",
-      "beers": []
+      "beers": [],
+      "likedBeers": []
     },
     {
       "id": 5,
       "email": "tracey.ramos@google.com",
       "name": "Tracey",
       "password": "abc",
-      "beers": []
+      "beers": [],
+      "likedBeers": []
     },
     {
       "email": "fsd",
@@ -44,6 +49,7 @@
       "beers": [
         1
       ],
+      "likedBeers": [],
       "id": 6
     },
     {
@@ -53,6 +59,7 @@
       "beers": [
         1
       ],
+      "likedBeers": [],
       "id": 7
     },
     {
@@ -61,10 +68,11 @@
       "password": "aaa",
       "beers": [
         1,
+        5,
         3,
-        4,
-        5
+        2
       ],
+      "likedBeers": [],
       "id": 8
     },
     {
@@ -83,6 +91,48 @@
         6
       ],
       "id": 9
+    },
+    {
+      "email": "hallo@g.com",
+      "name": "plop",
+      "password": "a",
+      "beers": [
+        5
+      ],
+      "likedBeers": [],
+      "id": 10
+    },
+    {
+      "email": "p@p.com",
+      "name": "p",
+      "password": "p",
+      "beers": [
+        5
+      ],
+      "likedBeers": [],
+      "id": 11
+    },
+    {
+      "email": "k@k.com",
+      "name": "k",
+      "password": "k",
+      "beers": [
+        5,
+        3
+      ],
+      "likedBeers": [],
+      "id": 12
+    },
+    {
+      "email": "w@j.com",
+      "name": "w",
+      "password": "w",
+      "beers": [
+        3,
+        5
+      ],
+      "likedBeers": [],
+      "id": 13
     }
   ],
   "beers": [
@@ -140,7 +190,10 @@
       "countries": [
         "Belgium",
         "Netherlands",
-        "UK"
+        "UK",
+        "Germany",
+        "Canada",
+        "Nigeria"
       ]
     },
     {
