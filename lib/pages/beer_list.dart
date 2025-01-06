@@ -52,8 +52,10 @@ class _BeerListPageState extends State<BeerListPage> {
   void _sortBeers() {
     setState(() {
       if (_sortOption == 'Alphabetical') {
+        filteredBeerList = beerList;
         filteredBeerList.sort((a, b) => a.name.compareTo(b.name));
       } else if (_sortOption == 'Rating') {
+        filteredBeerList = beerList;
         filteredBeerList.sort((a, b) => b.rating.compareTo(a.rating));
       } else if (_sortOption == 'Liked') {
         filteredBeerList = likedBeers; // Show only liked beers
