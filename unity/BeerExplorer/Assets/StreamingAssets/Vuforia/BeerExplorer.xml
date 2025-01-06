@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig>
   <Tracking>
+    <ImageTarget name="paixdieuetiket" size="5.000000 2.547771" />
+    <ImageTarget name="chimayblue" size="5.000000 3.683206" />
+    <ImageTarget name="guinness-label-i9040" size="5.000000 6.358268" />
+    <ImageTarget name="leffeblond" size="5.000000 5.000000" />
+    <ImageTarget name="stella-artois" size="5.000000 3.966667" />
+    <ImageTarget name="westmalle_dubbel_00" size="5.000000 4.683333" />
+    <ImageTarget name="westmalletripelnew" size="5.000000 5.000000" />
     <ImageTarget name="tsingtao" size="5.000000 6.666667" />
     <ImageTarget name="heineken" size="5.000000 6.000000" />
     <ImageTarget name="duvel" size="5.000000 3.710562" />

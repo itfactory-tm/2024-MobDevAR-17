@@ -18,6 +18,7 @@ class _ArPageState extends State<ArPage> {
   UnityWidgetController? _unityWidgetController;
   bool _isCameraPermissionGranted = false;
   Beer? beer;
+  bool _isScanAreaVisible = true;
 
   @override
   void initState() {
@@ -50,18 +51,57 @@ class _ArPageState extends State<ArPage> {
           child: Text('Camera permission is required to proceed.'));
     }
 
-    return UnityWidget(
-      onUnityCreated: _onUnityCreated,
-      onUnityMessage: onUnityMessage,
-      onUnitySceneLoaded: onUnitySceneLoaded,
-      useAndroidViewSurface: true,
-      borderRadius: const BorderRadius.all(Radius.circular(70)),
+    return Stack(
+      children: [
+        // Unity widget voor de wereldbol
+        UnityWidget(
+          onUnityCreated: _onUnityCreated,
+          onUnityMessage: onUnityMessage,
+          useAndroidViewSurface: true,
+          borderRadius: const BorderRadius.all(Radius.circular(70)),
+        ),
+
+        if (_isScanAreaVisible)
+          Positioned.fill(
+            child: Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: 250, // Pas de grootte van het vak aan
+                height: 250, // Pas de grootte van het vak aan
+                decoration: BoxDecoration(
+                  border:
+                      Border.all(color: Colors.blue, width: 3), // Groene rand
+                  borderRadius: BorderRadius.circular(12),
+                ),
+              ),
+            ),
+          ),
+        if (!_isScanAreaVisible)
+          Positioned(
+            bottom: 50,
+            left: 20,
+            child: ElevatedButton(
+              onPressed: () {
+                _setWorldVisibility(false);
+                setState(() {
+                  _isScanAreaVisible = true;
+                });
+              },
+              child: Text('Opnieuw scannen'),
+            ),
+          ),
+      ],
     );
   }
 
   void _sendBeer() {
     _unityWidgetController?.postMessage(
         "TargetBeer", "SetTargetBeer", jsonEncode(beer?.toJson()));
+  }
+
+  void _setWorldVisibility(bool visibility) {
+    _unityWidgetController?.postMessage(
+        "WorldVisibility", "SetWorldVisibility", jsonEncode(visibility));
   }
 
   void onUnityMessage(message) {
@@ -75,6 +115,7 @@ class _ArPageState extends State<ArPage> {
       if (key == "TrackedObject" && name.isNotEmpty) {
         BeerApi.fetchBeerByName(name).then((beer) {
           setState(() {
+            _isScanAreaVisible = false;
             this.beer = beer;
           });
           if (beer != null) {
@@ -82,23 +123,6 @@ class _ArPageState extends State<ArPage> {
             UserApi.addBeerToUser(currentUser!.id, this.beer!.id);
           } else {
             debugPrint("Beer not found: $name");
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text("Bier $name niet gevonden!"),
-                  content: const Text("Probeer een ander bier..."),
-                  actions: [
-                    TextButton(
-                      child: const Text("OK"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                );
-              },
-            );
           }
         });
       }

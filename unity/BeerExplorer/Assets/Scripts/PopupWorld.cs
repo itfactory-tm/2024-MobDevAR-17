@@ -15,83 +15,41 @@ public class PopupWorld : DefaultObserverEventHandler
     public GameObject pinPrefab;
     private readonly float radius = 10f;
     public float distanceFromCamera = 2.0f;
-    // private List<string> countries = new List<string>() { "nul", "France", "Spain" };
+
+    private List<string> countries = new List<string>() { "nul", "France", "Spain" };
 
     protected override void Start()
     {
         base.Start();
         ReadCoords();  
-        // PlacePins(countries);
     }
 
-   private IEnumerator AnimateWorldAppearance()
-    {
-        Vector3 startPosition = world.transform.position - new Vector3(0, 3f, 0);
-        Vector3 endPosition = new Vector3(0, 0, 0);
-
-        float animationTime = 1.5f;
-        float elapsedTime = 0;
-
-        // Zet de beginpositie van de wereld
-        world.transform.position = startPosition;
-
-        while (elapsedTime < animationTime)
+    void Update() {
+        if (!world.activeSelf && pins.Count > 0)
         {
-            elapsedTime += Time.deltaTime;
-            float progress = Mathf.Clamp01(elapsedTime / animationTime);
-
-            // Bounce effect met een sinusachtige curve
-            float bounceProgress = EaseOutBounce(progress);
-
-            // Bereken de nieuwe positie met bounce
-            world.transform.position = Vector3.Lerp(startPosition, endPosition, bounceProgress);
-
-            yield return null; // Wacht tot de volgende frame
+            foreach (var pin in pins.Values) Destroy(pin);
+            pins.Clear();
         }
 
-        // Zorg ervoor dat de bol exact op de eindpositie staat na de animatie
-        world.transform.position = endPosition;
-    }
-
-    private float EaseOutBounce(float t)
-    {
-        if (t < (1 / 2.75f))
-        {
-            return 7.5625f * t * t;
-        }
-        else if (t < (2 / 2.75f))
-        {
-            t -= 1.5f / 2.75f;
-            return 7.5625f * t * t + 0.75f;
-        }
-        else if (t < (2.5f / 2.75f))
-        {
-            t -= 2.25f / 2.75f;
-            return 7.5625f * t * t + 0.9375f;
-        }
-        else
-        {
-            t -= 2.625f / 2.75f;
-            return 7.5625f * t * t + 0.984375f;
-        }
+        if (world.activeSelf) centerGameObject(world, Camera.main, 33.0f);
     }
 
     protected override void OnTrackingFound()
     {
         base.OnTrackingFound();
+        // PlacePins(countries);
+        // Stuur het bericht naar Flutter
+        UnityMessageManager.Instance.SendMessageToFlutter(JsonUtility.ToJson(
+            new TrackedObjectMessageFlutter() { key = "TrackedObject", name = _name }
+        ));
+
         world.SetActive(true);
-        StartCoroutine(AnimateWorldAppearance());
-
-        foreach (var pin in pins.Values) Destroy(pin);
-        pins.Clear();
-
-        // Message
-        UnityMessageManager.Instance.SendMessageToFlutter(JsonUtility.ToJson(new TrackedObjectMessageFlutter() { key = "TrackedObject", name = _name}));
     }
 
     protected override void OnTrackingLost()
     {
         base.OnTrackingLost();
+        // world.SetActive(false);
     }
 
     public void PlacePins(List<string> countries) {
@@ -102,6 +60,11 @@ public class PopupWorld : DefaultObserverEventHandler
             Quaternion rotation = CalculateRotation(position);
             pins[country] = Instantiate(pinPrefab, position, rotation, world.transform);
         }
+    }
+
+    void centerGameObject(GameObject gameOBJToCenter, Camera cameraToCenterOBjectTo, float zOffset = 2.6f)
+    {
+        gameOBJToCenter.transform.position = cameraToCenterOBjectTo.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, cameraToCenterOBjectTo.nearClipPlane + zOffset));
     }
 
     private void ReadCoords() {
