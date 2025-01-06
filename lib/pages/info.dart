@@ -14,7 +14,7 @@ class InfoPage extends StatefulWidget {
 class _InfoPageState extends State<InfoPage> {
   final String title = "BeerExplorer";
   final String description =
-      "dfsfqs jkldqf jkle jkjdfmqs kej ifdk anwk kk dlqei kdf nsdqkfme ikkdkdkd maij fdpoakjfmdsiq ekjfmd ie kdi kemqd ie jkd aod odp jka";
+      "Welcome to our BeerExplorer app! \nHere you can scan a new beer and save it with a rating. ";
   final Icon icon = const Icon(Icons.home, size: 32, color: Colors.greenAccent);
 
   @override
@@ -30,7 +30,7 @@ class _InfoPageState extends State<InfoPage> {
             onPressed: _navigateToRegister,
             tooltip: "Register",
             child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
               child: Text(
                 "Register",
                 style: TextStyle(
@@ -40,12 +40,12 @@ class _InfoPageState extends State<InfoPage> {
               ),
             ),
           ),
-          const SizedBox(width: 8), // Ruimte tussen de knoppen
+          const SizedBox(width: 16), // Ruimte tussen de knoppen
           FloatingActionButton(
             onPressed: _navigateToLogin,
             tooltip: "Login",
             child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+              padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5.0),
               child: Text(
                 "Login",
                 style: TextStyle(

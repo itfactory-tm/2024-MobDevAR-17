@@ -3,7 +3,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class BeerApi {
-  static String server = '192.168.0.240:3000';
+  // static String server = '192.168.0.240:3000';
+  static String server = '192.168.0.70:3000';
 
   static Future<List<Beer>> fetchBeers() async {
     var url = Uri.http(server, '/beers');
@@ -79,5 +80,55 @@ class BeerApi {
       print('Error fetching beers: $e');
     }
     return beers;
+  }
+
+  static Future<List<Beer>> getLikedBeers(int userId) async {
+    var url = Uri.http(server, '/users/$userId');
+
+    try {
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        Map<String, dynamic> userJson = jsonDecode(response.body);
+        List<int> likedBeersIds = List<int>.from(userJson['likedBeers']);
+
+        // Fetch the beers using their IDs
+        List<Beer> likedBeers = [];
+        for (var beerId in likedBeersIds) {
+          Beer? beer = await BeerApi.fetchBeerById(beerId);
+          if (beer != null) {
+            likedBeers.add(beer);
+          }
+        }
+
+        return likedBeers;
+      } else {
+        print("Failed to fetch liked beers: ${response.statusCode}");
+      }
+    } catch (e) {
+      print("Error fetching liked beers: $e");
+    }
+
+    return []; // Return an empty list on failure
+  }
+
+ static Future<List<Beer>> fetchTopBeers() async {
+    var url = Uri.http(server, '/beers/top');  // Zorg ervoor dat de server dit endpoint ondersteunt
+
+    try {
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        List jsonResponse = json.decode(response.body);
+        return jsonResponse.map((beer) => Beer.fromJson(beer)).toList();
+      } else {
+        // Foutafhandelingscode als de statuscode niet 200 is
+        print('Failed to load top beers: ${response.statusCode}');
+        return [];  // Retourneer een lege lijst als het ophalen van de bieren mislukt
+      }
+    } catch (e) {
+      print('Error fetching top beers: $e');
+      return [];  // Retourneer een lege lijst bij een netwerkfout
+    }
   }
 }

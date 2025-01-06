@@ -63,18 +63,142 @@
         1
       ],
       "id": 8
+    },
+    {
+      "email": "",
+      "name": "cisse",
+      "password": "abc",
+      "beers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "likedBeers": [
+        6,
+        3,
+        2
+      ],
+      "id": 9
     }
   ],
   "beers": [
     {
       "id": 1,
+      "name": "Paix Dieu",
+      "brewery": "Brasserie Dupont",
+      "rating": 4.6,
+      "description": "Een Belgisch abdijbier met een rijke smaak en een lichte kruidigheid.",
+      "countries": [
+        "Belgium"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Stella Artois",
+      "brewery": "Stella Artois",
+      "rating": 4.3,
+      "description": "Een frisse pilsener met een zachte bittere smaak en een subtiele moutigheid.",
+      "countries": [
+        "Belgium",
+        "USA",
+        "UK"
+      ]
+    },
+    {
+      "id": 3,
       "name": "Duvel",
-      "brewery": "abc",
+      "brewery": "Duvel Moortgat",
       "rating": 4.8,
-      "description": "dfdsqfsqdfsqfqsfs",
+      "description": "Een klassiek Belgisch bier met een rijke smaak en een pittige afdronk.",
       "countries": [
         "Belgium",
         "Netherlands"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Chimay Blue",
+      "brewery": "Chimay",
+      "rating": 4.7,
+      "description": "Een donker trappistenbier met een rijke en krachtige smaak.",
+      "countries": [
+        "Belgium",
+        "USA",
+        "Canada"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Westmalle Tripel",
+      "brewery": "Westmalle",
+      "rating": 4.9,
+      "description": "Een gouden tripel met een complexe smaak en een kruidige geur.",
+      "countries": [
+        "Belgium",
+        "Netherlands",
+        "UK"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Westmalle Dubbel",
+      "brewery": "Westmalle",
+      "rating": 4.7,
+      "description": "Een dieper gekleurde dubbel met een rijke en moutige smaak.",
+      "countries": [
+        "Belgium",
+        "Netherlands"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Heineken",
+      "brewery": "Heineken",
+      "rating": 2,
+      "description": "Een wereldberoemd pilsener met een frisse, licht bittere smaak.",
+      "countries": [
+        "Netherlands",
+        "USA",
+        "Australia"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "Leffe Blonde",
+      "brewery": "Leffe",
+      "rating": 4.5,
+      "description": "Een zacht en fruitig abdijbier met een lichte hint van vanille.",
+      "countries": [
+        "Belgium",
+        "France",
+        "Germany"
+      ]
+    },
+    {
+      "id": 9,
+      "name": "Jupiler",
+      "brewery": "Anheuser-Busch InBev",
+      "rating": 3.8,
+      "description": "Een populair Belgisch pilsener met een frisse en lichte smaak.",
+      "countries": [
+        "Belgium",
+        "Luxembourg",
+        "France"
+      ]
+    },
+    {
+      "id": 10,
+      "name": "Guinness Draught",
+      "brewery": "Guinness",
+      "rating": 4.6,
+      "description": "Een iconisch Iers stoutbier met een zachte, romige textuur.",
+      "countries": [
+        "Ireland",
+        "UK",
+        "USA"
       ]
     }
   ]

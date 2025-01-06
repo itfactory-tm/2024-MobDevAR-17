@@ -19,7 +19,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    user = User(id: 0, name: "", password: "", email: "", beers: []);
+    user = User(id: 0, name: "", password: "", email: "", beers: [], likedBeers: []);
   }
 
   @override
@@ -27,62 +27,90 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Login"),
+        backgroundColor: Colors.blueAccent,
+        elevation: 0,
       ),
       body: Container(
-        padding: const EdgeInsets.all(5.0),
-        child: _userDetails(),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _loginUser,
-        label: const Text("Login"),
-        icon: const Icon(Icons.login),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.blue.shade100, Colors.blue.shade300],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 50.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              // Logo or title area (optional)
+              const Center(
+                child: Icon(
+                  Icons.login,
+                  size: 100,
+                  color: Colors.white,
+                ),
+              ),
+              const SizedBox(height: 30),
+
+              // Username field
+              TextField(
+                controller: firstnameController,
+                style: TextStyle(fontSize: 16.0, color: Colors.black),
+                keyboardType: TextInputType.text,
+                decoration: InputDecoration(
+                  labelText: "Username",
+                  labelStyle: TextStyle(color: Colors.black),
+                  hintText: "Enter your username",
+                  filled: true,
+                  fillColor: Colors.white.withOpacity(0.7),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+
+              // Password field
+              TextField(
+                controller: passwordController,
+                style: TextStyle(fontSize: 16.0, color: Colors.black),
+                obscureText: true,
+                decoration: InputDecoration(
+                  labelText: "Password",
+                  labelStyle: TextStyle(color: Colors.black),
+                  hintText: "Enter your password",
+                  filled: true,
+                  fillColor: Colors.white.withOpacity(0.7),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 30),
+
+              // Login Button
+              ElevatedButton(
+                onPressed: _loginUser,
+                style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0), backgroundColor: Colors.blueAccent,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                ),
+                child: const Text(
+                  "Login",
+                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.black),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
-  }
-
-  _userDetails() {
-    if (user == null) {
-      return const Center(child: CircularProgressIndicator());
-    } else {
-      TextStyle? textStyle = Theme.of(context).textTheme.bodyText1;
-
-      firstnameController.text = user!.name;
-      passwordController.text = user!.password;
-
-      return Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: <Widget>[
-            TextField(
-              controller: firstnameController,
-              style: textStyle,
-              keyboardType: TextInputType.text,
-              decoration: InputDecoration(
-                labelText: "Username",
-                labelStyle: textStyle,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-              ),
-            ),
-            const SizedBox(height: 15),
-            TextField(
-              controller: passwordController,
-              style: textStyle,
-              keyboardType: TextInputType.text,
-              obscureText: true, // Hide password text
-              decoration: InputDecoration(
-                labelText: "Password",
-                labelStyle: textStyle,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(5.0),
-                ),
-              ),
-            ),
-          ],
-        ),
-      );
-    }
   }
 
   void _loginUser() {
