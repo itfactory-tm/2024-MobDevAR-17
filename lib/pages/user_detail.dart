@@ -36,7 +36,7 @@ class _UserDetailPageState extends State<UserDetailPage> {
     super.initState();
 
     if (widget.id == 0) {
-      user = User(id: 0, name: "", password: "", email: "", beers: []);
+      user = User(id: 0, name: "", password: "", email: "", beers: [], likedBeers: []);
     } else {
       // this is the id parameter you declared in the StatefulWidget class (UserDetailPage)
       _getUser(widget.id); // get the user info using the api
