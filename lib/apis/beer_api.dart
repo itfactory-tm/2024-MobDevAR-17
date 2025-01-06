@@ -3,10 +3,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class BeerApi {
-  static String server = 'nice-tools-swim.loca.lt';
+  static String server = '192.168.0.240:3000';
 
   static Future<List<Beer>> fetchBeers() async {
-    var url = Uri.https(server, '/beers');
+    var url = Uri.http(server, '/beers');
+
     try {
       final response = await http.get(url);
 
@@ -26,7 +27,7 @@ class BeerApi {
   }
 
   static Future<Beer?> fetchBeerById(int id) async {
-    var url = Uri.https(server, '/beers/$id');
+    var url = Uri.http(server, '/beers/$id');
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -42,7 +43,7 @@ class BeerApi {
 
   static Future<Beer?> fetchBeerByName(String name) async {
     // Voeg de queryparameter toe aan de URL
-    var url = Uri.https(server, '/beers', {'name': name});
+    var url = Uri.http(server, '/beers', {'name': name});
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -64,7 +65,7 @@ class BeerApi {
     List<Beer> beers = [];
     try {
       for (int id in ids) {
-        var url = Uri.https(server, '/beers/$id');
+        var url = Uri.http(server, '/beers/$id');
         final response = await http.get(url);
 
         if (response.statusCode == 200) {

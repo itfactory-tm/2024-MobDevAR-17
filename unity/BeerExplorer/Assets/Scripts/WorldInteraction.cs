@@ -3,9 +3,9 @@ using UnityEngine;
 public class WorldInteraction : MonoBehaviour
 {
     public float rotationSpeed; // Snelheid van rotatie
-    public float zoomSpeed;     // Snelheid van zoomen
-    public float minZoom;       // Minimale zoomafstand
-    public float maxZoom;      // Maximale zoomafstand
+    // public float zoomSpeed;     // Snelheid van zoomen
+    // public float minZoom;       // Minimale zoomafstand
+    // public float maxZoom;      // Maximale zoomafstand
 
     private Vector3 lastMousePosition;
     private bool isDragging = false;
@@ -23,7 +23,7 @@ public class WorldInteraction : MonoBehaviour
         HandleRotation();
 
         // Zoom
-        HandleZoom();
+        // HandleZoom();
     }
 
     private void HandleRotation()
@@ -75,32 +75,32 @@ public class WorldInteraction : MonoBehaviour
         }
     }
 
-    private void HandleZoom()
-    {
-        // Voor muiswiel op PC
-        float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (scroll != 0f)
-        {
-            float newZoom = Mathf.Clamp(mainCamera.transform.position.magnitude - scroll * zoomSpeed, minZoom, maxZoom);
-            mainCamera.transform.position = mainCamera.transform.position.normalized * newZoom;
-        }
+    // private void HandleZoom()
+    // {
+    //     // Voor muiswiel op PC
+    //     float scroll = Input.GetAxis("Mouse ScrollWheel");
+    //     if (scroll != 0f)
+    //     {
+    //         float newZoom = Mathf.Clamp(mainCamera.transform.position.magnitude - scroll * zoomSpeed, minZoom, maxZoom);
+    //         mainCamera.transform.position = mainCamera.transform.position.normalized * newZoom;
+    //     }
 
-        // Voor pinch-to-zoom op mobiel
-        if (Input.touchCount == 2)
-        {
-            Touch touch0 = Input.GetTouch(0);
-            Touch touch1 = Input.GetTouch(1);
+    //     // Voor pinch-to-zoom op mobiel
+    //     if (Input.touchCount == 2)
+    //     {
+    //         Touch touch0 = Input.GetTouch(0);
+    //         Touch touch1 = Input.GetTouch(1);
 
-            Vector2 touch0PrevPos = touch0.position - touch0.deltaPosition;
-            Vector2 touch1PrevPos = touch1.position - touch1.deltaPosition;
+    //         Vector2 touch0PrevPos = touch0.position - touch0.deltaPosition;
+    //         Vector2 touch1PrevPos = touch1.position - touch1.deltaPosition;
 
-            float prevMagnitude = (touch0PrevPos - touch1PrevPos).magnitude;
-            float currentMagnitude = (touch0.position - touch1.position).magnitude;
+    //         float prevMagnitude = (touch0PrevPos - touch1PrevPos).magnitude;
+    //         float currentMagnitude = (touch0.position - touch1.position).magnitude;
 
-            float difference = currentMagnitude - prevMagnitude;
+    //         float difference = currentMagnitude - prevMagnitude;
 
-            float newZoom = Mathf.Clamp(mainCamera.transform.position.magnitude - difference * zoomSpeed * Time.deltaTime, minZoom, maxZoom);
-            mainCamera.transform.position = mainCamera.transform.position.normalized * newZoom;
-        }
-    }
+    //         float newZoom = Mathf.Clamp(mainCamera.transform.position.magnitude - difference * zoomSpeed * Time.deltaTime, minZoom, maxZoom);
+    //         mainCamera.transform.position = mainCamera.transform.position.normalized * newZoom;
+    //     }
+    // }
 }

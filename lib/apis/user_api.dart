@@ -1,13 +1,13 @@
-import 'package:beer_explorer/globals.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../models/user.dart';
 
 class UserApi {
-  static String server = 'nice-tools-swim.loca.lt';
+  static String server = '192.168.0.240:3000';
 
   static Future<List<User>> fetchUsers() async {
-    var url = Uri.https(server, '/users');
+    var url = Uri.http(server, '/users');
+
     try {
       final response = await http.get(url);
 
@@ -27,7 +27,7 @@ class UserApi {
   }
 
   static Future<User?> fetchUser(int id) async {
-    var url = Uri.https(server, '/users/$id');
+    var url = Uri.http(server, '/users/$id');
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
@@ -42,7 +42,7 @@ class UserApi {
   }
 
   static Future<User?> createUser(User user) async {
-    var url = Uri.https(server, '/users');
+    var url = Uri.http(server, '/users');
     try {
       final http.Response response = await http.post(
         url,
@@ -63,7 +63,7 @@ class UserApi {
   }
 
   static Future<User?> updateUser(int id, User user) async {
-    var url = Uri.https(server, '/users/$id');
+    var url = Uri.http(server, '/users/$id');
     try {
       final http.Response response = await http.put(
         url,
@@ -84,7 +84,7 @@ class UserApi {
   }
 
   static Future<bool> deleteUser(int id) async {
-    var url = Uri.https(server, '/users/$id');
+    var url = Uri.http(server, '/users/$id');
     try {
       final http.Response response = await http.delete(url);
       if (response.statusCode == 200) {
@@ -101,7 +101,7 @@ class UserApi {
   static Future<User?> loginUser(String username, String password) async {
     // Stel de queryparameters in
     var url =
-        Uri.https(server, '/users', {'name': username, 'password': password});
+        Uri.http(server, '/users', {'name': username, 'password': password});
 
     try {
       final response = await http.get(url);
@@ -126,7 +126,7 @@ class UserApi {
   }
 
   static Future<User?> fetchUserByName(String name) async {
-    var url = Uri.https(server, '/users', {'name': name});
+    var url = Uri.http(server, '/users', {'name': name});
     try {
       final response = await http.get(url);
 
@@ -146,7 +146,7 @@ class UserApi {
   }
 
   static Future<bool> addBeerToUser(int userId, int beerId) async {
-    var url = Uri.https(server, '/users/$userId');
+    var url = Uri.http(server, '/users/$userId');
 
     try {
       // Fetch the user to get the current beers list

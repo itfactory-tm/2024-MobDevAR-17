@@ -5,7 +5,9 @@
       "email": "george.bluth@reqres.in",
       "name": "George",
       "password": "abc",
-      "beers": []
+      "beers": [
+        1
+      ]
     },
     {
       "id": 2,

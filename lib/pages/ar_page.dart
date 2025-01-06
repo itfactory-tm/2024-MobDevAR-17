@@ -60,13 +60,8 @@ class _ArPageState extends State<ArPage> {
   }
 
   void _sendBeer() {
-    if (beer != null) {
-      _unityWidgetController?.postMessage(
-          "TargetBeer", "SetTargetBeer", jsonEncode(beer!.toJson()));
-      debugPrint("Beer sent to Unity: ${beer!.name}");
-    } else {
-      debugPrint("No beer to send to Unity.");
-    }
+    _unityWidgetController?.postMessage(
+        "TargetBeer", "SetTargetBeer", jsonEncode(beer?.toJson()));
   }
 
   void onUnityMessage(message) {
