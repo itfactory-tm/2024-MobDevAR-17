@@ -22,8 +22,6 @@ public class PopupWorld : DefaultObserverEventHandler
     {
         base.Start();
         ReadCoords();  
-        // world.transform.position = Vector3.zero;
-        PlacePins(countries);
     }
 
     void Update() {
@@ -32,17 +30,20 @@ public class PopupWorld : DefaultObserverEventHandler
             foreach (var pin in pins.Values) Destroy(pin);
             pins.Clear();
         }
+
+        if (world.activeSelf) centerGameObject(world, Camera.main, 33.0f);
     }
 
     protected override void OnTrackingFound()
     {
         base.OnTrackingFound();
-        world.SetActive(true);
-
+        // PlacePins(countries);
         // Stuur het bericht naar Flutter
         UnityMessageManager.Instance.SendMessageToFlutter(JsonUtility.ToJson(
             new TrackedObjectMessageFlutter() { key = "TrackedObject", name = _name }
         ));
+
+        world.SetActive(true);
     }
 
     protected override void OnTrackingLost()
@@ -59,6 +60,11 @@ public class PopupWorld : DefaultObserverEventHandler
             Quaternion rotation = CalculateRotation(position);
             pins[country] = Instantiate(pinPrefab, position, rotation, world.transform);
         }
+    }
+
+    void centerGameObject(GameObject gameOBJToCenter, Camera cameraToCenterOBjectTo, float zOffset = 2.6f)
+    {
+        gameOBJToCenter.transform.position = cameraToCenterOBjectTo.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, cameraToCenterOBjectTo.nearClipPlane + zOffset));
     }
 
     private void ReadCoords() {

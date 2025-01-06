@@ -70,7 +70,7 @@ class _ArPageState extends State<ArPage> {
                 height: 250, // Pas de grootte van het vak aan
                 decoration: BoxDecoration(
                   border:
-                      Border.all(color: Colors.green, width: 3), // Groene rand
+                      Border.all(color: Colors.blue, width: 3), // Groene rand
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
@@ -123,23 +123,6 @@ class _ArPageState extends State<ArPage> {
             UserApi.addBeerToUser(currentUser!.id, this.beer!.id);
           } else {
             debugPrint("Beer not found: $name");
-            showDialog(
-              context: context,
-              builder: (BuildContext context) {
-                return AlertDialog(
-                  title: Text("Bier $name niet gevonden!"),
-                  content: const Text("Probeer een ander bier..."),
-                  actions: [
-                    TextButton(
-                      child: const Text("OK"),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                );
-              },
-            );
           }
         });
       }
