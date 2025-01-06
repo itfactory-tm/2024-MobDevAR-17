@@ -5,8 +5,8 @@ import 'dart:convert';
 import '../models/user.dart';
 
 class UserApi {
-  // static String server = '192.168.0.240:3000';
-  static String server = '192.168.0.70:3000';
+  static String server = '192.168.0.240:3000';
+  // static String server = '192.168.0.70:3000';
 
   static Future<List<User>> fetchUsers() async {
     var url = Uri.http(server, '/users');
@@ -231,35 +231,35 @@ class UserApi {
   }
 
   static Future<List<Beer>> getLikedBeers(int userId) async {
-  var url = Uri.http(server, '/users/$userId');
+    var url = Uri.http(server, '/users/$userId');
 
-  try {
-    final response = await http.get(url);
+    try {
+      final response = await http.get(url);
 
-    if (response.statusCode == 200) {
-      Map<String, dynamic> userJson = jsonDecode(response.body);
-      List<int> likedBeersIds = List<int>.from(userJson['likedBeers']);
+      if (response.statusCode == 200) {
+        Map<String, dynamic> userJson = jsonDecode(response.body);
+        List<int> likedBeersIds = List<int>.from(userJson['likedBeers']);
 
-      // Haal de bieren op met de ID's
-      List<Beer> likedBeers = [];
-      for (var beerId in likedBeersIds) {
-        // Voor elke beerId, haal de bierinformatie op via de API
-        Beer? beer = await BeerApi.fetchBeerById(beerId);
-        likedBeers.add(beer!);
+        // Haal de bieren op met de ID's
+        List<Beer> likedBeers = [];
+        for (var beerId in likedBeersIds) {
+          // Voor elke beerId, haal de bierinformatie op via de API
+          Beer? beer = await BeerApi.fetchBeerById(beerId);
+          likedBeers.add(beer!);
+        }
+
+        return likedBeers;
+      } else {
+        print("Failed to fetch liked beers: ${response.statusCode}");
       }
-
-      return likedBeers;
-    } else {
-      print("Failed to fetch liked beers: ${response.statusCode}");
+    } catch (e) {
+      print("Error fetching liked beers: $e");
     }
-  } catch (e) {
-    print("Error fetching liked beers: $e");
+
+    return []; // Retourneer een lege lijst bij een fout
   }
 
-  return []; // Retourneer een lege lijst bij een fout
-}
-
- static Future<bool> removeLikedBeerFromUser(int userId, int beerId) async {
+  static Future<bool> removeLikedBeerFromUser(int userId, int beerId) async {
     var url = Uri.http(server, '/users/$userId');
 
     try {
@@ -300,5 +300,4 @@ class UserApi {
 
     return false;
   }
-
 }

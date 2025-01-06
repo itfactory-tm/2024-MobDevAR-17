@@ -6,7 +6,7 @@ public class TargetBeer : MonoBehaviour
 {
     private Beer beer;
 
-    private PopupWorld world;
+    private PopupWorld popupworld;
 
     [System.Serializable]
     public class Beer
@@ -21,7 +21,7 @@ public class TargetBeer : MonoBehaviour
 
     void Start()
     {
-        world = FindObjectOfType<PopupWorld>();
+        popupworld = FindObjectOfType<PopupWorld>();
     }
 
     void Update()
@@ -32,6 +32,7 @@ public class TargetBeer : MonoBehaviour
     void SetTargetBeer(string targetBeerJsonString)
     {
         beer = JsonConvert.DeserializeObject<Beer>(targetBeerJsonString);
-        world.PlacePins(beer.countries);
+        popupworld.PlacePins(beer.countries);
+        popupworld.world.SetActive(true);
     }
 }

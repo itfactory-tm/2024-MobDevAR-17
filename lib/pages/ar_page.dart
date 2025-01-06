@@ -121,6 +121,7 @@ class _ArPageState extends State<ArPage> {
           if (beer != null) {
             _sendBeer();
             UserApi.addBeerToUser(currentUser!.id, this.beer!.id);
+            currentUser!.beers.add(this.beer!.id);
           } else {
             debugPrint("Beer not found: $name");
           }

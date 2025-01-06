@@ -23,7 +23,8 @@ class _BeerListPageState extends State<BeerListPage> {
   void initState() {
     super.initState();
     _getBeers();
-    _searchController.addListener(_filterBeers); // Listen for changes in the search field
+    _searchController
+        .addListener(_filterBeers); // Listen for changes in the search field
     _getLikedBeers(); // Fetch liked beers initially
   }
 
@@ -74,7 +75,8 @@ class _BeerListPageState extends State<BeerListPage> {
                 .contains(_searchController.text.toLowerCase()))
             .toList();
       }
-      count = filteredBeerList.length; // Update the count based on filtered beers
+      count =
+          filteredBeerList.length; // Update the count based on filtered beers
     });
   }
 
@@ -82,7 +84,8 @@ class _BeerListPageState extends State<BeerListPage> {
     setState(() {
       if (likedBeers.contains(beer)) {
         likedBeers.remove(beer); // Remove the beer from liked beers list
-        UserApi.removeLikedBeerFromUser(currentUser!.id, beer.id); // Remove from server
+        UserApi.removeLikedBeerFromUser(
+            currentUser!.id, beer.id); // Remove from server
       } else {
         likedBeers.add(beer); // Add the beer to liked beers list
         UserApi.addLikedBeerToUser(currentUser!.id, beer.id); // Add to server
@@ -91,11 +94,21 @@ class _BeerListPageState extends State<BeerListPage> {
     });
   }
 
- @override
+  @override
   Widget build(BuildContext context) {
     // Check if beerList is empty (still loading), show a loading indicator if so
-    if (beerList.isEmpty) {
-      return const Center(child: CircularProgressIndicator()); // Show loading if beerList is empty
+    if (beerList.isEmpty && filteredBeerList.isEmpty) {
+      return Scaffold(
+        appBar: AppBar(
+          title: const Text("Explored Beers"),
+        ),
+        body: const Center(
+          child: Text(
+            "No scanned beers yet.",
+            style: TextStyle(fontSize: 18.0, color: Colors.grey),
+          ),
+        ),
+      );
     }
 
     // Check if sorting by liked beers and there are no liked beers
@@ -218,9 +231,11 @@ class _BeerListPageState extends State<BeerListPage> {
     }
 
     return ListView.builder(
-      itemCount: filteredBeerList.length, // gebruik de lengte van de filteredBeerList
+      itemCount:
+          filteredBeerList.length, // gebruik de lengte van de filteredBeerList
       itemBuilder: (BuildContext context, int position) {
-        final beer = filteredBeerList[position]; // Toegang tot het bier op de juiste index
+        final beer = filteredBeerList[
+            position]; // Toegang tot het bier op de juiste index
         final double rating = beer.rating;
 
         Color getRatingColor(double rating) {

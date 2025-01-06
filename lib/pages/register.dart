@@ -19,7 +19,8 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   void initState() {
     super.initState();
-    user = User(id: 0, name: "", password: "", email: "", beers: [], likedBeers: []);
+    user = User(
+        id: 0, name: "", password: "", email: "", beers: [], likedBeers: []);
   }
 
   @override
@@ -115,14 +116,18 @@ class _RegisterPageState extends State<RegisterPage> {
               ElevatedButton(
                 onPressed: _saveUser,
                 style: ElevatedButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0), backgroundColor: Colors.blueAccent,
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  backgroundColor: Colors.blueAccent,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12.0),
                   ),
                 ),
                 child: const Text(
                   "Register",
-                  style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: 18.0,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black),
                 ),
               ),
             ],
@@ -137,7 +142,6 @@ class _RegisterPageState extends State<RegisterPage> {
     user!.name = firstnameController.text.trim();
     user!.password = passwordController.text.trim();
     user!.email = emailController.text.trim();
-    user!.beers = [1]; // Voeg standaard een bier toe (optioneel)
 
     if (user!.id == 0) {
       // Controleer of er al een gebruiker bestaat met dezelfde naam
